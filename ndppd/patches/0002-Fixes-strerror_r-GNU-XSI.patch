@@ -13,15 +13,19 @@ diff --git a/src/logger.cc b/src/logger.cc
 index 6ddbea9..6ccb2a0 100644
 --- a/src/logger.cc
 +++ b/src/logger.cc
-@@ -84,6 +84,6 @@ std::string logger::err()
- {
-     char buf[2048];
+@@ -86,9 +86,9 @@ std::string logger::err()
+ 
+ #if (_POSIX_C_SOURCE >= 200112L || _XOPEN_SOURCE >= 600) && ! _GNU_SOURCE
+-    if (strerror_r(errno, buf, sizeof(buf))
++    if strerror_r_wrapper(strerror_r(errno, buf, sizeof(buf)), buf)
+         return "Unknown error";
+     return buf;
+ #else
 -    return strerror_r(errno, buf, sizeof(buf));
 +    return strerror_r_wrapper(strerror_r(errno, buf, sizeof(buf)), buf);
+ #endif
  }
- 
- logger logger::error()
-@@ -221,4 +221,16 @@ 
+@@ -228,4 +228,16 @@ 
      return false;
  }
 

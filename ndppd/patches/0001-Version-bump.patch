@@ -16,7 +16,7 @@ index 57ba829..3e11221 100644
  #define NDPPD_NS_END     }
  
 -#define NDPPD_VERSION   "0.2.4"
-+#define NDPPD_VERSION   "0.2.5"
++#define NDPPD_VERSION   "0.2.6-beta"
  
  #include <assert.h>
  
